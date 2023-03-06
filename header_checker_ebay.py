@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import requests
 from bs4 import BeautifulSoup
 from html import unescape
@@ -10,6 +11,11 @@ path = "url.txt"
 
 # Specify the output file name
 output_file = "output.txt"
+
+# Create the file if it doesn't exist
+if not os.path.exists(path):
+    with open(path, "w") as f:
+        pass
 
 # Clear the contents of the output file
 with open(output_file, "w") as f:
