@@ -13,22 +13,6 @@ To use URL Title Extractor, you need to provide a text file named "url.txt" that
 $ python3 url_title_extractor.py
 
 ```
-This will prompt you to enter the expiration date of the packaging in the format "dd-mm-yyyy". After entering the date, the program will display a table with the name, quantity, packaging, and purchase price of the products whose expiration date is later than the date you entered.
+This will extract the titles from each URL in the file and output the results to a file named "output.txt". If there are any errors encountered during the extraction process, the program will output the URL with an "ERROR LINK" prefix to the output file.
 
-Here's an example output for the given sample:
-
-```shell
-Enter the expiration date of the packaging (format: dd-mm-yyyy): 01-01-2025
-+----------------+------------+-----------------+----------------------+
-| Nome Articolo  | Quantità   | Confezionamento | Prezzo di acquisto |
-+================+============+=================+======================+
-| 1111 | Test    | 9          | 01-01-2023      | 0.50                 |
-+----------------+------------+-----------------+----------------------+
-| 2222 | Test    | 1          | 01-01-2024      | 20.00                |
-+----------------+------------+-----------------+----------------------+
-| 3333 | Test    | 1          | 01-01-2024      | 34.50                |
-+----------------+------------+-----------------+----------------------+
-| 4444 | Test    | 2          | 01-01-2025      | 23.00                |
-+----------------+------------+-----------------+----------------------+
-```
-This output shows the name, quantity, packaging, and purchase price of all the products whose expiration date is later than January 1, 2025.
+After running the program, you can view the output file to see the extracted titles.
