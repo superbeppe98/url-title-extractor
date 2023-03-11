@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from html import unescape
 import re
+import time
 
 # Specify the path to the file containing URLs
 path = "url.txt"
@@ -22,8 +23,9 @@ with open(output_file, "w") as f:
     f.write("")
 
 # Initialize error count and total count to 0
-error_count = 0
 total_count = 0
+error_count = 0
+extract_count = 0
 
 # Loop over the lines in the file specified by path
 with open(path, "r") as f:
@@ -38,8 +40,8 @@ with open(path, "r") as f:
             title = soup.find('title').get_text()
         except:
             with open(output_file, "a") as f:
-                f.write(f"ERROR LINK: {url}\n")
-            error_count += 1
+                f.write(f"ERROR EXTRACT TITLE: {url}\n")
+            extract_count += 1
             continue
 
         # Decode the title using unescape
@@ -49,7 +51,7 @@ with open(path, "r") as f:
         decoded_string = re.sub(r'\s*\|\s*eBay\s*$', '', decoded_string)
 
         # Check if the decoded string is "Page Error", indicating an error
-        if decoded_string == "Page Error":
+        if decoded_string == "Pagina errore":
             with open(output_file, "a") as f:
                 f.write(f"ERROR LINK: {url}\n")
             error_count += 1
@@ -62,3 +64,4 @@ with open(path, "r") as f:
 # Print a summary of the results
 print(f"Total URLs processed: {total_count}")
 print(f"Errors encountered: {error_count}")
+print(f"Extract encountered: {extract_count}")
