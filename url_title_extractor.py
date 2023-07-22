@@ -3,9 +3,16 @@
 import os
 import requests
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 from html import unescape
 import re
 import time
+from inventree.api import InvenTreeAPI
+from inventree.part import Part
+from inventree.stock import StockItem
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Specify the path to the file containing URLs
 path = "url.txt"
@@ -18,9 +25,32 @@ if not os.path.exists(path):
     with open(path, "w") as f:
         pass
 
-# Clear the contents of the output file
+# Clear the contents of the  input and output files
+with open(path, "w") as f:
+    pass
 with open(output_file, "w") as f:
-    f.write("")
+    pass
+
+# Create an instance of the Inventree API
+SERVER_ADDRESS = os.environ.get('INVENTREE_SERVER_ADDRESS')
+MY_USERNAME = os.environ.get('INVENTREE_USERNAME')
+MY_PASSWORD = os.environ.get('INVENTREE_PASSWORD')
+api = InvenTreeAPI(SERVER_ADDRESS, username=MY_USERNAME,
+                   password=MY_PASSWORD, timeout=3600)
+
+# Request the input file thought api request with all parts
+parts = Part.list(api)
+
+# Order the list of parts by IPN
+parts.sort(key=lambda x: x.IPN)
+
+# Append all parts in the input file if the link is not empty, otherwise make the link ""
+with open(path, 'a') as f:
+    for part in parts:
+        if part.link:
+            f.write(part.link + '\n')
+        else:
+            f.write('\n')
 
 # Initialize error count and total count to 0
 total_count = 0
