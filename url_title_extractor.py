@@ -9,7 +9,6 @@ import re
 import time
 from inventree.api import InvenTreeAPI
 from inventree.part import Part
-from inventree.stock import StockItem
 
 # Load environment variables from .env file
 load_dotenv()
@@ -67,7 +66,7 @@ with open(path, "r") as f:
         try:
             response = requests.get(url)
             soup = BeautifulSoup(response.text, 'html.parser')
-            #title = soup.find('title').get_text()
+            # title = soup.find('title').get_text()
             # displaying the title
             for title in soup.find_all('title'):
                 print(title.get_text())
