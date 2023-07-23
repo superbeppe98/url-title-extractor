@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from html import unescape
 import re
-import time
 from inventree.api import InvenTreeAPI
 from inventree.part import Part
 
