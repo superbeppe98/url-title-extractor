@@ -67,7 +67,10 @@ with open(path, "r") as f:
         try:
             response = requests.get(url)
             soup = BeautifulSoup(response.text, 'html.parser')
-            title = soup.find('title').get_text()
+            #title = soup.find('title').get_text()
+            # displaying the title
+            for title in soup.find_all('title'):
+                print(title.get_text())
         except:
             with open(output_file, "a") as f:
                 f.write(f"ERROR EXTRACT TITLE: {url}\n")
@@ -75,7 +78,7 @@ with open(path, "r") as f:
             continue
 
         # Decode the title using unescape
-        decoded_string = unescape(title)
+        decoded_string = unescape(title.get_text())
 
         # Remove the "| eBay" suffix using regex
         decoded_string = re.sub(r'\s*\|\s*eBay\s*$', '', decoded_string)
