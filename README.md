@@ -8,11 +8,24 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-To use URL Title Extractor Ebay, you need to provide a text file named "url.txt" that contains a list of URLs to extract the titles from. Once you have the file ready, you can run the program by navigating to the directory where the program is stored and running the following command:
+Set up the necessary environment variables for connecting to your InvenTree server. Make sure to replace YOUR_SERVER_ADDRESS, YOUR_USERNAME, and YOUR_PASSWORD with the appropriate values:
+
 ```shell
-$ python3 url_title_extractor.py
-
+export INVENTREE_SERVER_ADDRESS=YOUR_SERVER_ADDRESS
+export INVENTREE_USERNAME=YOUR_USERNAME
+export INVENTREE_PASSWORD=YOUR_PASSWORD
 ```
-This will extract the titles from each URL in the file and output the results to a file named "output.txt". If there are any errors encountered during the extraction process, the program will output the URL with an "ERROR LINK" prefix to the output file.
 
-After running the program, you can view the output file to see the extracted titles.
+Run the url_title_extractor.py script:
+
+```shell
+python3 url_title_extractor.py
+```
+
+The script will connect to your InvenTree server using the provided credentials and fetch the part data. It will then sort the parts by their IPN and save the links to an input file named output.txt.
+
+After the script has finished running, you can view the output.txt file to see the extracted links.
+
+Please ensure that you have the correct access permissions to the InvenTree server and comply with the usage policies of the server.
+
+Note: The script assumes that the Part class has been appropriately imported from the inventree module and that the link attribute exists for each part in the server's data.
