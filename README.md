@@ -16,10 +16,10 @@ export INVENTREE_USERNAME=YOUR_USERNAME
 export INVENTREE_PASSWORD=YOUR_PASSWORD
 ```
 
-Run the url_title_extractor.py script:
+Run the url-title-extractor-ebay.py script:
 
 ```shell
-python3 url_title_extractor.py
+python3 url-title-extractor-ebay.py
 ```
 
 The script will connect to your InvenTree server using the provided credentials and fetch the part data. It will then sort the parts by their IPN and save the links to an input file named output.txt.
