@@ -14,12 +14,6 @@ Run the url-title-extractor.py script:
 python3 url-title-extractor.py
 ```
 
-Run the url_title_extractor.py script:
-
-```shell
-python3 url_title_extractor.py
-```
-
 The script will connect to your InvenTree server using the provided credentials and fetch the part data. It will then sort the parts by their IPN and save the links to an input file named output.txt.
 
 After the script has finished running, you can view the output.txt file to see the extracted links.
