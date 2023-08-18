@@ -14,8 +14,16 @@ Run the url-title-extractor.py script:
 python3 url-title-extractor.py
 ```
 
-The script will connect to the provided URLs, extract the titles of the web pages, and save them to an output file named output.txt.
+Run the url_title_extractor.py script:
 
-Once the script completes, you can view the output.txt file to see the extracted titles and any error messages.
+```shell
+python3 url_title_extractor.py
+```
 
-Note: If the script encounters errors while extracting titles, it will log these errors in the output.txt file.
+The script will connect to your InvenTree server using the provided credentials and fetch the part data. It will then sort the parts by their IPN and save the links to an input file named output.txt.
+
+After the script has finished running, you can view the output.txt file to see the extracted links.
+
+Please ensure that you have the correct access permissions to the InvenTree server and comply with the usage policies of the server.
+
+Note: The script assumes that the Part class has been appropriately imported from the inventree module and that the link attribute exists for each part in the server's data.
